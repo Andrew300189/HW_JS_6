@@ -6,26 +6,25 @@ const controlsDiv = document.getElementById('controls');
 const createButton = controlsDiv.querySelector('[data-create]');
 const destroyButton = controlsDiv.querySelector('[data-destroy]');
 const boxesDiv = document.getElementById('boxes');
+const input = controlsDiv.querySelector('input');
 
 createButton.addEventListener('click', createBoxes);
 destroyButton.addEventListener('click', destroyBoxes);
 
 function createBoxes() {
-  const amount = parseInt(controlsDiv.querySelector('input').value, 10);
-  const fragment = document.createDocumentFragment();
+  const amount = parseInt(input.value, 10);
+  let boxesHTML = '';
 
   for (let i = 0; i < amount; i++) {
-    const box = document.createElement('div');
-    box.classList.add('box');
-    box.style.width = `${30 + i * 10}px`;
-    box.style.height = `${30 + i * 10}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(box);
+    const boxSize = 30 + i * 10;
+    const boxColor = getRandomHexColor();
+    boxesHTML += `<div class="box" style="width: ${boxSize}px; height: ${boxSize}px; background-color: ${boxColor};"></div>`;
   }
 
-  boxesDiv.appendChild(fragment);
+  boxesDiv.innerHTML = boxesHTML;
 }
 
 function destroyBoxes() {
   boxesDiv.innerHTML = '';
+  input.value = '';
 }
