@@ -6,4 +6,6 @@ function updateFontSize() {
   textElement.style.fontSize = `${fontSize}px`;
 }
 
+updateFontSize();
+
 fontSizeControl.addEventListener('input', updateFontSize);

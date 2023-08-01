@@ -13,9 +13,10 @@ destroyButton.addEventListener('click', destroyBoxes);
 
 function createBoxes() {
   const amount = parseInt(input.value, 10);
+  const step = parseInt(input.step, 10);
   let boxesHTML = '';
 
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i += step) {
     const boxSize = 30 + i * 10;
     const boxColor = getRandomHexColor();
     boxesHTML += `<div class="box" style="width: ${boxSize}px; height: ${boxSize}px; background-color: ${boxColor};"></div>`;
